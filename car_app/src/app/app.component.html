@@ -1,8 +1,12 @@
 <header>
-    <h1>{{ firstMessage }}</h1>
-    <h3>{{ secondMessage }}</h3>
+  <h1>{{ firstMessage }}</h1>
+  <h3>{{ secondMessage }}</h3>
 </header>
 
 <section>
-    <app-cars-list [cars_list]="displayedCars"></app-cars-list>
+  <app-cars-list
+    (rentACar)="rentTheCar($event)"
+    (returnACar)="returnTheCar($event)"
+    [cars_list]="displayedCars"
+  ></app-cars-list>
 </section>

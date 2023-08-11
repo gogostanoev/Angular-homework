@@ -1,10 +1,18 @@
 <section class="container">
-    <div *ngFor="let car of cars_list">
-        <h4>Model: {{ car.model }}</h4>
-        <p>Engine: {{ car.engineType }}</p>
-        <p>Production Year: {{ car.yearOfProduction }}</p>
-        <p>Price to rent: {{ car.priceToRent }}</p>
-        <img src={{ car.image }} alt="">
-        <p>Rent status: {{ car.isRented }}</p>
+    <div *ngFor="let car of cars_list" class="car-container">
+        <div class="car-content">
+            <h3>Model: {{ car.model }}</h3>
+            <p>Engine: {{ car.engineType }}</p>
+            <p>Production Year: {{ car.yearOfProduction }}</p>
+            <p>Price to rent: {{ car.priceToRent }}</p>
+            <!-- <p>Rent status: {{ car.isRented }}</p> -->
+            <h4 [ngClass]="car.isRented === true ? 'isAvailable' : 'notAvailable'">Available</h4>
+
+            <div class="operations">
+                <button (click)="rentCar(car.id)" *ngIf="!car.isRented">Rent</button>
+                <button (click)="returnCar(car.id)" *ngIf="car.isRented">Return the car</button>
+            </div>
+        </div>
+        <img [src]="car.image">
     </div>
 </section>

@@ -5,7 +5,7 @@ export const cars = [
         engineType: "B18C",
         yearOfProduction: "1997",
         priceToRent: 350,
-        image: "../mock-data/images/honda_integra.webp",
+        image: "assets/images/honda_integra.png",
         isRented: false
     },
     {
@@ -14,7 +14,7 @@ export const cars = [
         engineType: "Twin-Turbo Aluminum-Alloy 75-Degree V-6",
         yearOfProduction: "2016",
         priceToRent: 400,
-        image: "../mock-data/images/acura-nsx.png",
+        image: "assets/images/acura-nsx.png",
         isRented: true
     },
     {
@@ -23,7 +23,7 @@ export const cars = [
         engineType: "R8 Major/Gordini I4",
         yearOfProduction: "1963",
         priceToRent: 1200,
-        image: "../mock-data/images/alphine-a110.webp",
+        image: "assets/images/alpine-a110.png",
         isRented: true
     },
     {
@@ -32,7 +32,7 @@ export const cars = [
         engineType: "M840T twin-turbocharged V8",
         yearOfProduction: "2017",
         priceToRent: 2100,
-        image: "../mock-data/images/mclaren-720s",
+        image: "assets/images/mclaren-720s.png",
         isRented: true,
     },
     {
@@ -41,7 +41,7 @@ export const cars = [
         engineType: "Subaru FA engine",
         yearOfProduction: "2012",
         priceToRent: 500,
-        image: "../mock-data/images/subaru-brz.png",
+        image: "assets/images/subaru-brz.png",
         isRented: false
     },
     {
@@ -50,7 +50,7 @@ export const cars = [
         engineType: "EcoTec3 V8 engine",
         yearOfProduction: "2022",
         priceToRent: 3500,
-        image: "../mock-data/images/chevy-silverado.png",
+        image: "assets/images/chevy-silverado.png",
         isRented: false
     }
 ]

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Car } from 'src/app/interfaces/car.interface';
 
 @Component({
@@ -9,4 +9,15 @@ import { Car } from 'src/app/interfaces/car.interface';
 export class CarsListComponent {
   @Input()
   cars_list: Car[] = []
+
+  @Output() rentACar = new EventEmitter<number>();
+  @Output() returnACar = new EventEmitter<number>();
+
+  rentCar = (carId: number) => {
+    this.rentACar.emit(carId);
+  };
+
+  returnCar = (carId: number) => {
+    this.returnACar.emit(carId);
+  };
 }
