@@ -1,0 +1,10 @@
+<section class="container">
+    <div *ngFor="let car of cars_list">
+        <h4>Model: {{ car.model }}</h4>
+        <p>Engine: {{ car.engineType }}</p>
+        <p>Production Year: {{ car.yearOfProduction }}</p>
+        <p>Price to rent: {{ car.priceToRent }}</p>
+        <img src={{ car.image }} alt="">
+        <p>Rent status: {{ car.isRented }}</p>
+    </div>
+</section>
