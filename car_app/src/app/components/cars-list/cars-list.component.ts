@@ -9,6 +9,7 @@ import { Car } from 'src/app/interfaces/car.interface';
 export class CarsListComponent {
   @Input()
   cars_list: Car[] = []
+  filteredCars: Car[] = []
 
   @Output() rentACar = new EventEmitter<number>();
   @Output() returnACar = new EventEmitter<number>();
@@ -20,4 +21,16 @@ export class CarsListComponent {
   returnCar = (carId: number) => {
     this.returnACar.emit(carId);
   };
-}
+
+  allRentedCars = () => {
+    this.filteredCars = this.cars_list.filter(car => car.isRented);
+  };
+
+  allAvailableCars = () => {
+    this.filteredCars = this.cars_list.filter(car => !car.isRented);
+  };
+
+  fullReset = () => {
+    this.filteredCars = [...this.cars_list];
+  };
+};

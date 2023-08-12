@@ -21,7 +21,6 @@ export class AppComponent {
           isRented: true
         }
       }
-      console.log(car.isRented, "first")
       return car
     });
   };
@@ -34,7 +33,6 @@ export class AppComponent {
           isRented: false
         }
       }
-      console.log(car.isRented, "second")
       return car
     });
   };
