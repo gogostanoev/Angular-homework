@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Car } from 'src/app/interfaces/car.interface';
+import { cars } from 'src/mock-data/cars';
 
 @Component({
   selector: 'app-cars-list',
@@ -8,8 +9,12 @@ import { Car } from 'src/app/interfaces/car.interface';
 })
 export class CarsListComponent {
   @Input()
-  cars_list: Car[] = []
-  filteredCars: Car[] = []
+  cars_list: Car[] = [];
+  @Input()
+  originalCars: Car[] = [...cars];
+
+  filteredCars: Car[] = [];
+  
 
   @Output() rentACar = new EventEmitter<number>();
   @Output() returnACar = new EventEmitter<number>();
@@ -23,14 +28,20 @@ export class CarsListComponent {
   };
 
   allRentedCars = () => {
-    this.filteredCars = this.cars_list.filter(car => car.isRented);
+    this.filteredCars = this.originalCars.filter(car => car.isRented);
+    this.cars_list = this.filteredCars;
+    console.log("which cars are rented?", this.filteredCars)
   };
 
   allAvailableCars = () => {
-    this.filteredCars = this.cars_list.filter(car => !car.isRented);
+    this.filteredCars = this.originalCars.filter(car => !car.isRented);
+    this.cars_list = this.filteredCars;
+    console.log("Which cars are available?", this.filteredCars)
   };
 
   fullReset = () => {
-    this.filteredCars = [...this.cars_list];
+    this.cars_list = this.originalCars;
+    console.log(this.cars_list)
+    console.log(this.originalCars)
   };
-};
+}

@@ -1,23 +1,3 @@
-// .container {
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: space-evenly;
-//     padding-top: 20px;
-
-//     .car-container {
-//         border: 1px solid black;
-//         width: 500px;
-//         // margin to separate the borders in a column
-//         margin: 20px;
-//         text-align: center;
-//     }
-
-//     img {
-//         height: 100px;
-//         width: auto;
-//     }
-// }
-
 .container {
     display: flex;
     justify-content: space-evenly;
@@ -30,11 +10,11 @@
         border: 1px solid black;
         width: 30%;
         margin: 10px;
-        position: relative; /* Add this to enable positioning */
+        position: relative; 
 
         .car-content {
-            flex: 1; /* Let the content take up available space */
-            padding-left: 20px; /* Offset the text from the left side */
+            flex: 1; 
+            padding-left: 20px; 
             font-size: 20px;
 
             .isAvailable {
