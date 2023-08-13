@@ -12,15 +12,14 @@
       <h3>Model: {{ car.model }}</h3>
       <p>Engine: {{ car.engineType }}</p>
       <p>Production Year: {{ car.yearOfProduction }}</p>
-      <p>Price to rent: {{ car.priceToRent }}</p>
-      <!-- <p>Rent status: {{ car.isRented }}</p> -->
+      <p>Price to rent: {{ car.priceToRent | currency: 'EUR': 'symbol': '1.0-0' }}</p>
       <h4 [ngClass]="!car.isRented ? 'isAvailable' : 'notAvailable'">
         Available
       </h4>
 
       <div class="operations">
-        <button (click)="rentCar(car.id)" *ngIf="!car.isRented">Rent</button>
-        <button (click)="returnCar(car.id)" *ngIf="car.isRented">
+        <button class="rent-button" (click)="rentCar(car.id)" *ngIf="!car.isRented">Rent</button>
+        <button class="return-button" (click)="returnCar(car.id)" *ngIf="car.isRented">
           Return the car
         </button>
       </div>

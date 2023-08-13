@@ -1,0 +1,28 @@
+.info-btn {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.custom-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: #2980b9;
+}
+
+.reset-button {
+    background-color: #e74c3c;
+}
+
+.reset-button:hover {
+    background-color: #c0392b;
+}

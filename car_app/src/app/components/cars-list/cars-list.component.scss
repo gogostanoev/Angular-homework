@@ -1,8 +1,43 @@
+// .container {
+//     display: flex;
+//     justify-content: space-evenly;
+//     flex-wrap: wrap;
+//     padding-top: 30px;
+
+//     .car-container {
+//         display: flex;
+//         align-items: center;
+//         border: 1px solid black;
+//         width: 30%;
+//         margin: 10px;
+//         position: relative; 
+
+//         .car-content {
+//             flex: 1; 
+//             padding-left: 20px; 
+//             font-size: 20px;
+
+//             .isAvailable {
+//                 color: green;
+//             }
+
+//             .notAvailable {
+//                 display: none;
+//             }
+//         }
+
+//         img {
+//             height: 100px;
+//             width: auto;
+//         }
+//     }
+// }
+
 .container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding-top: 30px;
+    padding-top: 20px;
 
     .car-container {
         display: flex;
@@ -10,11 +45,11 @@
         border: 1px solid black;
         width: 30%;
         margin: 10px;
-        position: relative; 
+        position: relative;
 
         .car-content {
-            flex: 1; 
-            padding-left: 20px; 
+            flex: 1;
+            padding-left: 20px;
             font-size: 20px;
 
             .isAvailable {
@@ -29,6 +64,37 @@
         img {
             height: 100px;
             width: auto;
+        }
+
+        .operations {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .rent-button,
+            .return-button {
+                padding: 8px 15px;
+                border: none;
+                border-radius: 5px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .rent-button {
+                background-color: #3498db;
+                color: white;
+            }
+
+            .return-button {
+                background-color: #e74c3c;
+                color: white;
+            }
+
+            .rent-button:hover,
+            .return-button:hover {
+                background-color: #2980b9;
+            }
         }
     }
 }

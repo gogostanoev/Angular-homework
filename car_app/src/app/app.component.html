@@ -3,11 +3,19 @@
   <h3>{{ secondMessage }}</h3>
 </header>
 
+<div class="sort-container">
+  <label class="sort-label" for="sortDirection">Sort cars:</label>
+  <select class="sort-select" name="sortDirection" id="sortDirection" [(ngModel)]="selectedSortDirection">
+    <option value="asc">Lowest to Highest</option>
+    <option value="desc">Highest to Lowest</option>
+  </select>
+</div>
+
 <section>
   <app-cars-list
     (rentACar)="rentTheCar($event)"
     (returnACar)="returnTheCar($event)"
-    [cars_list]="displayedCars"
+    [cars_list]="displayedCars | filterSort:selectedSortDirection"
     [originalCars]="displayedCars"
   ></app-cars-list>
 </section>

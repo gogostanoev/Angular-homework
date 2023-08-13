@@ -30,18 +30,18 @@ export class CarsListComponent {
   allRentedCars = () => {
     this.filteredCars = this.originalCars.filter(car => car.isRented);
     this.cars_list = this.filteredCars;
-    console.log("which cars are rented?", this.filteredCars)
+    // console.log("which cars are rented?", this.filteredCars)
   };
 
   allAvailableCars = () => {
     this.filteredCars = this.originalCars.filter(car => !car.isRented);
     this.cars_list = this.filteredCars;
-    console.log("Which cars are available?", this.filteredCars)
+    // console.log("Which cars are available?", this.filteredCars)
   };
 
   fullReset = () => {
     this.cars_list = this.originalCars;
-    console.log(this.cars_list)
-    console.log(this.originalCars)
+    // console.log(this.cars_list)
+    // console.log(this.originalCars)
   };
 }
