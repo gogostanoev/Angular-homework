@@ -13,9 +13,6 @@ export class AppComponent {
   
   displayedCars: Car[] = cars;
 
-  // The Ascending option should be pre-selected.
-  selectedSortDirection: 'asc' | 'desc' = 'asc';
-
   rentTheCar = (carId: number) => {
     this.displayedCars = this.displayedCars.map((car) => {
       if(car.id === carId && !car.isRented) {

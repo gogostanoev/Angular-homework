@@ -15,6 +15,8 @@ export class CarsListComponent {
 
   filteredCars: Car[] = [];
   
+  // The Ascending option should be pre-selected.
+  selectedSortDirection: 'asc' | 'desc' = 'asc';
 
   @Output() rentACar = new EventEmitter<number>();
   @Output() returnACar = new EventEmitter<number>();

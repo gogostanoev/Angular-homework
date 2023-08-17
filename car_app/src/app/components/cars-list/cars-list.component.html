@@ -1,4 +1,11 @@
 <section>
+  <div class="sort-container">
+    <label class="sort-label" for="sortDirection">Sort cars:</label>
+    <select class="sort-select" name="sortDirection" id="sortDirection" [(ngModel)]="selectedSortDirection">
+      <option value="asc">Lowest to Highest</option>
+      <option value="desc">Highest to Lowest</option>
+    </select>
+  </div>
   <app-filter-options
     (showRented)="allRentedCars()"
     (showAvailable)="allAvailableCars()"
@@ -7,7 +14,7 @@
 </section>
 
 <section class="container">
-  <div *ngFor="let car of cars_list" class="car-container">
+  <div *ngFor="let car of cars_list | filterSort:selectedSortDirection" class="car-container">
     <div class="car-content">
       <h3>Model: {{ car.model }}</h3>
       <p>Engine: {{ car.engineType }}</p>
