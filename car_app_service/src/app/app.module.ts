@@ -14,7 +14,7 @@
 // Inject the service in the components that is needed, and use the service instead of using @Input @Output for data menagement.
 
 // Note
-// When Reset (reseting filters) button is clicked, you should return all the cars no matter if they are rented or not. Use the code from class as guide and inspiration.
+// When Reset (reseting filters) button is clicked, you should return all the cars no matter if they are rented or not. Use the code from class as guide and inspiration
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
