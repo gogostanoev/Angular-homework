@@ -1,0 +1,32 @@
+<section>
+  <div class="sort-container">
+    <label class="sort-label" for="sortDirection">Sort cars:</label>
+    <select class="sort-select" name="sortDirection" id="sortDirection" [(ngModel)]="selectedSortDirection">
+      <option value="asc">Lowest to Highest</option>
+      <option value="desc">Highest to Lowest</option>
+    </select>
+  </div>
+  <app-filter-options></app-filter-options>
+</section>
+
+<section class="container">
+  <div *ngFor="let car of cars_list | filterSort:selectedSortDirection" class="car-container">
+    <div class="car-content">
+      <h3>Model: {{ car.model }}</h3>
+      <p>Engine: {{ car.engineType }}</p>
+      <p>Production Year: {{ car.yearOfProduction }}</p>
+      <p>Price to rent: {{ car.priceToRent | currency: 'EUR': 'symbol': '1.0-0' }}</p>
+      <h4 [ngClass]="!car.isRented ? 'isAvailable' : 'notAvailable'">
+        Available
+      </h4>
+
+      <div class="operations">
+        <button class="rent-button" (click)="rentCar(car.id)" *ngIf="!car.isRented">Rent</button>
+        <button class="return-button" (click)="returnCar(car.id)" *ngIf="car.isRented">
+          Return the car
+        </button>
+      </div>
+    </div>
+    <img [src]="car.image" />
+  </div>
+</section>
