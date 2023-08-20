@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { Car } from 'src/app/interfaces/car.interface';
 import { CarRentingService } from 'src/app/services/car-renting.service';
 
@@ -7,7 +7,7 @@ import { CarRentingService } from 'src/app/services/car-renting.service';
   templateUrl: './cars-list.component.html',
   styleUrls: ['./cars-list.component.scss']
 })
-export class CarsListComponent implements DoCheck, OnInit {
+export class CarsListComponent implements DoCheck {
   constructor(private readonly carRentingService: CarRentingService) {}
 
   cars_list: Car[] = [];
@@ -18,19 +18,11 @@ export class CarsListComponent implements DoCheck, OnInit {
     // console.log("active")
   };
 
-  ngOnInit(): void {
-    this.carRentingService._filterSort.subscribe((data) => {
-      console.log('Data:', data);
-
-      this.selectedSortDirection = data;
-    });
-  };
-
   rentCar(carId: number) {
-    this.carRentingService.rentTheCar(carId);
+    this.carRentingService.toggleRent(carId);
   };
 
   returnCar(carId: number) {
-    this.carRentingService.returnTheCar(carId);
+    this.carRentingService.toggleRent(carId);
   };
 };
