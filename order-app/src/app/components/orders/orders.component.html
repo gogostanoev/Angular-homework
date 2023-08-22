@@ -3,7 +3,7 @@
         <h2>Your orders!</h2>
         <div *ngFor="let product of orderedProducts" class="order-item">
             <p>Name: {{ product.name }}</p>
-            <p>Price: {{ product.price }}</p>
+            <p>Price: {{ product.price | currency: 'USD': 'symbol': '1.0-0' }}</p>
         </div>
     </ng-container>
     <ng-template #noOrders>
