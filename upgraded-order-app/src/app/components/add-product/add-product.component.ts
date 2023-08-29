@@ -1,0 +1,86 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/interfaces/product.interface';
+import { ProductsService } from '../services/products.service';
+import { Category } from 'src/app/interfaces/category.enum';
+
+@Component({
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.scss']
+})
+export class AddProductComponent implements OnInit {
+
+  constructor(private readonly productsService: ProductsService) {}
+
+  productForm: FormGroup;
+  addProduct: Product[] = [];
+  successMessage: string | null = null;
+
+  ngOnInit(): void {
+    this.initForm()
+
+    this.productsService.productsSubject.subscribe({
+      next: (data) => {
+        this.addProduct = data;
+      },
+
+      error: (error) => {
+        console.log('An error occured: ', error);
+      }
+    })
+  };
+
+  initForm(): void {
+    this.productForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
+      price: new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
+      category: new FormControl('', [Validators.required, this.categoryValidator]),
+      stock: new FormControl('', [Validators.required, Validators.pattern(/^[1-9]\d*$/)])
+    })
+  };
+
+  onProductSubmit = () => {
+    const product: Product = {
+      id: this.addProduct.length + 1,
+      name: this.productForm.get('name')?.value,
+      description: this.productForm.get('description')?.value,
+      price: parseFloat(this.productForm.get('price')?.value),
+      category: this.productForm.get('category')?.value,
+      stock: parseFloat(this.productForm.get('stock')?.value),
+      quantity: 0,
+      totalPrice: 0
+    }
+
+    this.addNewProduct(product);
+    this.successMessage = 'Product added successfully!';
+  };
+
+  addNewProduct(product: Product) {
+    this.productsService.productsSubject.next([...this.addProduct, product]);
+    console.log(this.productForm);
+  };
+
+  validCategories = [
+    Category.ELECTRONICS.toLowerCase(),
+    Category.CLOTHING.toLowerCase(),
+    Category.BOOKS.toLowerCase(),
+    Category.SPORTS.toLowerCase()
+  ];
+
+  categoryValidator = (control: FormControl): {[key: string]: boolean} | null => {
+    const enteredCategory = control.value.toLowerCase();
+
+    if (!this.validCategories.includes(enteredCategory)) {
+      return { invalidCategory: true }
+    }
+
+    return null;
+  };
+
+  areAllFieldsFilled(): boolean {
+    const controls = this.productForm.controls;
+    return Object.keys(controls).every(controlName => !!controls[controlName].value);
+  }
+};

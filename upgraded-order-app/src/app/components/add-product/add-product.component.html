@@ -1,0 +1,85 @@
+<form [formGroup]="productForm" (ngSubmit)="onProductSubmit()">
+  <div class="container">
+    <div class="input-field">
+      <label>Name: </label>
+      <input formControlName="name" type="text" id="name" />
+      <span
+        *ngIf="
+          productForm.get('name')?.invalid && productForm.get('name')?.touched
+        "
+      >
+        Name is required
+      </span>
+    </div>
+
+    <div class="input-field">
+      <label>Description: </label>
+      <textarea
+        formControlName="description"
+        name=""
+        id="description"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <span
+        *ngIf="
+          productForm.get('description')?.invalid &&
+          productForm.get('description')?.touched
+        "
+      >
+        Description is required and should be between 10 and 100 characters
+      </span>
+    </div>
+
+    <div class="input-field">
+      <label>Price: </label>
+      <input formControlName="price" type="text" id="price" />
+      <span
+        *ngIf="
+          productForm.get('price')?.invalid && productForm.get('price')?.touched
+        "
+      >
+        Invalid price format
+      </span>
+    </div>
+
+    <div class="input-field">
+      <label>Category: </label>
+      <input formControlName="category" type="text" id="category" />
+      <span
+        *ngIf="
+          productForm.get('category')?.invalid &&
+          productForm.get('category')?.touched
+        "
+      >
+        Invalid category
+      </span>
+    </div>
+
+    <div class="input-field">
+      <label>Stock: </label>
+      <input formControlName="stock" type="text" id="stock" />
+      <span
+        *ngIf="
+          productForm.get('stock')?.invalid && productForm.get('stock')?.touched
+        "
+      >
+        Invalid stock format
+      </span>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        [class.hoverable]="areAllFieldsFilled()"
+        [disabled]="!productForm.valid"
+      >
+        Add product
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <ng-container *ngIf="orderProducts.length > 0 else noOrders">
+        <h2>Your orders!</h2>
+        <div *ngFor="let product of orderProducts" class="order-item">
+            <p>Name: {{ product.name }}</p>
+            <p>Quantity: {{ product.quantity }}</p>
+            <p>Price per Unit: {{ product.price | currency: 'USD': 'symbol': '1.2-2' }}</p>
+            <p>Total Price: {{ product.totalPrice | currency: 'USD': 'symbol': '1.2-2' }}</p>
+        </div>
+    </ng-container>
+    <ng-template #noOrders>
+        <h2>You haven't placed any orders yet.</h2>
+    </ng-template>
+</div>

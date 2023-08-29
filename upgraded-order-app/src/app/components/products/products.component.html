@@ -1,0 +1,12 @@
+<section class="container">
+    <div class="products" *ngFor="let product of products">
+        <div class="product-card">
+            <h3>Name: {{ product.name }}</h3>
+            <p>Description: {{ product.description }}</p>
+            <p>Price: {{ product.price | currency: 'USD': 'symbol': '1.2-2' }}</p>
+            <p>Category: {{ product.category }}</p>
+            <p>In stock: {{ product.stock }}</p>
+            <button (click)="onStockReducer(product)">Order</button>
+        </div>
+    </div>
+</section>
