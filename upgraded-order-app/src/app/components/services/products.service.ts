@@ -55,7 +55,7 @@ export class ProductsService {
             ...productValue,
             quantity: productValue.quantity + 1,
             totalPrice: (productValue.quantity + 1) * productValue.price
-          };
+          }; 
         }
 
         return productValue;
