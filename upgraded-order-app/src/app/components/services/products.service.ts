@@ -34,11 +34,11 @@ export class ProductsService {
   };
 
   getOrderedProducts(product: Product) {
-    let currentValueProduct = this.orderedProducts.getValue();
-    const quantityChecker = currentValueProduct.find(productQuantity => product.id === productQuantity.id);
+    let currentlyOrderedProducts = this.orderedProducts.getValue();
+    const existingProduct = currentlyOrderedProducts.find(wholeProduct => product.id === wholeProduct.id);
 
-    if(!quantityChecker) {
-      const updatedQuantity = [...currentValueProduct, {
+    if(!existingProduct) {
+      const updatedQuantity = [...currentlyOrderedProducts, {
         ...product,
         quantity: 1,
         totalPrice: product.price
@@ -48,7 +48,7 @@ export class ProductsService {
     } else {
 
       if(product.stock === 0) return;
-      currentValueProduct = currentValueProduct.map((productValue) => {
+      currentlyOrderedProducts = currentlyOrderedProducts.map((productValue) => {
 
         if(product.id === productValue.id) {
           return {
@@ -61,7 +61,7 @@ export class ProductsService {
         return productValue;
       });
 
-      this.orderedProducts.next(currentValueProduct);
+      this.orderedProducts.next(currentlyOrderedProducts);
     }
   }
 };

@@ -95,6 +95,8 @@ export class AddProductComponent implements OnInit {
 
   areAllFieldsFilled(): boolean {
     const controls = this.productForm.controls;
+    // console.log(controls)
+    // console.log(Object.keys(controls))
     return Object.keys(controls).every(controlName => !!controls[controlName].value);
   }
 };
