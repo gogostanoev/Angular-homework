@@ -90,7 +90,7 @@ export class AddProductComponent implements OnInit {
       return { invalidCategory: true }
     }
 
-    return null
+    return null;
   };
 
   areAllFieldsFilled(): boolean {
