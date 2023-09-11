@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "title-font-ttf";
+  src: url("../../../assets/fonts/titleFont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "text-font-ttf";
+  src: url("../../../assets/fonts/textFont.ttf");
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #ffc600;
+  font-family: "title-font-ttf";
+  margin: -10px -20px 20px;
+
+  .title {
+    text-align: center;
+    flex: 1;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  nav li {
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: "text-font-ttf";
+    border: 1px solid #ffc600;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: rgba(255, 198, 0, 0.2);
+    }
+  
+    &.active {
+      background-color: #ffc600;
+      color: #000;
+    }
+  }
+}

@@ -1,8 +1,7 @@
 export interface Person {
-    id: string;
-    fullName: string;
+    name: string;
     gender: string;
-    birthYear: string;
+    birth_year: string;
     height: string;
     mass: string;
 }
